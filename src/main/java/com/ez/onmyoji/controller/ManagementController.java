@@ -1,12 +1,13 @@
 package com.ez.onmyoji.controller;
 
+import com.ez.onmyoji.bean.ShiShen;
 import com.ez.onmyoji.service.ShiShenService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 import javax.annotation.Resource;
 
@@ -25,7 +26,7 @@ public class ManagementController {
    */
   @ApiOperation(value = "式神初始化")
   @PostMapping("/init/shishen")
-  public Mono<String> initShiShen() {
-    return Mono.just("Hello World");
+  public Flux<ShiShen> initShiShen() {
+    return shiShenService.init();
   }
 }
