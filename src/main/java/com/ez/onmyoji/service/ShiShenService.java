@@ -33,6 +33,15 @@ public class ShiShenService {
   }
 
   /**
+   * 获取所有式神
+   *
+   * @return
+   */
+  public Flux<ShiShen> getAll() {
+    return repository.findAll();
+  }
+
+  /**
    * 从URL获取式神信息，并转换为bean
    *
    * @param shishenId
