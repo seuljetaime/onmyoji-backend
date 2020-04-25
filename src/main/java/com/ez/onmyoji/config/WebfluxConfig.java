@@ -1,6 +1,7 @@
 package com.ez.onmyoji.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.config.ResourceHandlerRegistry;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
 
@@ -14,5 +15,13 @@ public class WebfluxConfig implements WebFluxConfigurer {
 
     registry.addResourceHandler("/webjars/**")
       .addResourceLocations("classpath:/META-INF/resources/webjars/");
+  }
+
+  @Override
+  public void addCorsMappings(CorsRegistry registry) {
+    registry.addMapping("/**")
+      .allowedOrigins("*")
+      .allowedMethods("*")
+      .maxAge(3600);
   }
 }
